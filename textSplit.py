@@ -1,9 +1,6 @@
 import re
 
 
-
-
-
 sentenceEnders = re.compile(r"""
     # Split sentences on whitespace between them.
     (?:               # Group for two positive lookbehinds.
@@ -20,18 +17,13 @@ sentenceEnders = re.compile(r"""
     """, 
     re.IGNORECASE | re.VERBOSE)
 
-
-linesAll = ""
-with open("hunchback_english_sample.txt", "r+") as f:
-	
-    lines = f.readlines()
-    for line in lines:
-    	linesAll = linesAll+line
+with open("hunchback_english.txt", "r+") as f:
+    linesAll = f.read()
         
 linesAll = linesAll.replace("\n", " ")
 sentenceList = sentenceEnders.split(linesAll)        
 
 with open("hunchback_english_result.txt", "w") as f1:
-	for l in sentenceList:
-		f1.write(l+"\n")
+	for sentence in sentenceList:
+		f1.write(sentence+"\n")
 print sentenceList
