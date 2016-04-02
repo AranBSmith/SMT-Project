@@ -19,12 +19,12 @@ public class SentenceSplitter {
 			// out.close();
 			final byte NEWLINE = (byte) '\n';
 			FileInputStream fs = new FileInputStream("hunchback_english.txt");
-			FileOutputStream os = new FileOutputStream("hunchback_english_sentences.txt");
+			FileOutputStream os = new FileOutputStream("train-data.en");
 			byte b;
 			char c;
 			while((b=(byte)fs.read())!=-1) {
 				c = (char)b;
-				if (c != '\n') {
+				if (b != NEWLINE) {
 					os.write(c);
 				} 
 				if (c=='.'){
