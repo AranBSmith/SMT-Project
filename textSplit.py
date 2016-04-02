@@ -23,7 +23,7 @@ with open("hunchback_french.txt", "r+") as f:
 linesAll = linesAll.replace("\n", " ")
 sentenceList = sentenceEnders.split(linesAll)        
 
-with open("hunchback_french_result.txt", "w") as f1:
+with open("hunchback_french_result.en", "w") as f1:
 	for sentence in sentenceList:
 		f1.write(sentence+"\n")
 print sentenceList
