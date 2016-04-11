@@ -17,13 +17,14 @@ sentenceEnders = re.compile(r"""
     """, 
     re.IGNORECASE | re.VERBOSE)
 
-with open("hunchback_french.txt", "r+") as f:
+with open("hunchback_english.txt", "r+") as f:
     linesAll = f.read()
         
 linesAll = linesAll.replace("\n", " ")
 sentenceList = sentenceEnders.split(linesAll)        
 
-with open("hunchback_french_result.en", "w") as f1:
-	for sentence in sentenceList:
-		f1.write(sentence+"\n")
+with open("hunchback_english_result.en", "w") as f1:
+    for sentence in sentenceList:
+        if "?" not in sentence:
+            f1.write(sentence+"\n")
 print sentenceList
