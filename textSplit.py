@@ -1,4 +1,5 @@
 import re
+from itertools import cycle
 
 
 sentenceEnders = re.compile(r"""
@@ -17,14 +18,32 @@ sentenceEnders = re.compile(r"""
     """, 
     re.IGNORECASE | re.VERBOSE)
 
-with open("hunchback_english.txt", "r+") as f:
-    linesAll = f.read()
+with open("hunchback_english.txt", "r+") as fileEng:
+    linesEng = fileEng.read()
+with open("hunchback_french.txt", "r+") as fileFre:
+    linesFre = fileFre.read()
         
-linesAll = linesAll.replace("\n", " ")
-sentenceList = sentenceEnders.split(linesAll)        
+linesEng = linesEng.replace("\n", " ")
+linesFre = linesFre.replace("\n", " ")
 
-with open("hunchback_english_result.en", "w") as f1:
-    for sentence in sentenceList:
-        if "?" not in sentence:
-            f1.write(sentence+"\n")
-print sentenceList
+sentenceListEng = sentenceEnders.split(linesEng)
+sentenceListFre = sentenceEnders.split(linesFre)        
+
+sentenceListFre = cycle(sentenceListFre)
+
+count = 0
+
+with open("hunchback_english_result.en", "w") as fileEngResult:
+    with open("hunchback_french_result.en", "w") as fileFreResult:
+        for sentenceEng in sentenceListEng:
+            sentenceFre = sentenceListFre.next()
+            print count
+            print sentenceEng
+            print sentenceEng.count(';')
+            print sentenceFre
+            print sentenceFre.count(';')
+            count = count+1
+            if count == 40:
+                break
+            #if "?" not in sentence:
+            #   f1.write(sentence+"\n")
