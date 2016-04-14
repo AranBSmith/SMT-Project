@@ -1,0 +1,48 @@
+Defined parameters (per moses.ini or switch):
+	config: ./working/train/model/moses.ini 
+	distortion-limit: 6 
+	feature: UnknownWordPenalty WordPenalty PhrasePenalty PhraseDictionaryMemory name=TranslationModel0 table-limit=20 num-features=4 path=/users/case4/smitha47/SMT-Project/working/train/model/phrase-table.gz input-factor=0 output-factor=0 LexicalReordering name=LexicalReordering0 num-features=6 type=wbe-msd-bidirectional-fe-allff input-factor=0 output-factor=0 path=/users/case4/smitha47/SMT-Project/working/train/model/reordering-table.wbe-msd-bidirectional-fe.gz Distortion KENLM lazyken=0 name=LM0 factor=0 path=/users/case4/smitha47/SMT-Project/lm/lm.arpa.en order=3 
+	input-factors: 0 
+	mapping: 0 T 0 
+	weight: UnknownWordPenalty0= 1 WordPenalty0= -1 PhrasePenalty0= 0.2 TranslationModel0= 0.2 0.2 0.2 0.2 LexicalReordering0= 0.3 0.3 0.3 0.3 0.3 0.3 Distortion0= 0.3 LM0= 0.5 
+/usr/local/mosesdecoder/bin
+line=UnknownWordPenalty
+FeatureFunction: UnknownWordPenalty0 start: 0 end: 0
+line=WordPenalty
+FeatureFunction: WordPenalty0 start: 1 end: 1
+line=PhrasePenalty
+FeatureFunction: PhrasePenalty0 start: 2 end: 2
+line=PhraseDictionaryMemory name=TranslationModel0 table-limit=20 num-features=4 path=/users/case4/smitha47/SMT-Project/working/train/model/phrase-table.gz input-factor=0 output-factor=0
+FeatureFunction: TranslationModel0 start: 3 end: 6
+line=LexicalReordering name=LexicalReordering0 num-features=6 type=wbe-msd-bidirectional-fe-allff input-factor=0 output-factor=0 path=/users/case4/smitha47/SMT-Project/working/train/model/reordering-table.wbe-msd-bidirectional-fe.gz
+FeatureFunction: LexicalReordering0 start: 7 end: 12
+Initializing LexicalReordering..
+line=Distortion
+FeatureFunction: Distortion0 start: 13 end: 13
+line=KENLM lazyken=0 name=LM0 factor=0 path=/users/case4/smitha47/SMT-Project/lm/lm.arpa.en order=3
+FeatureFunction: LM0 start: 14 end: 14
+Loading the LM will be faster if you build a binary file.
+Reading /users/case4/smitha47/SMT-Project/lm/lm.arpa.en
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading UnknownWordPenalty0
+Loading WordPenalty0
+Loading PhrasePenalty0
+Loading LexicalReordering0
+Loading table into memory...done.
+Loading Distortion0
+Loading LM0
+Loading TranslationModel0
+Start loading text SCFG phrase table. Moses  format : [0.000] seconds
+Reading /users/case4/smitha47/SMT-Project/working/train/model/phrase-table.gz
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+IO from STDOUT/STDIN
+Created input-output object : [1.000] seconds
+Translating line 0  in thread id 140029658187520
+Translating: Oui, c'est nes pas moi. 
+Line 0: Collecting options took 0.000 seconds
+Line 0: Search took 0.000 seconds
+BEST TRANSLATION: Oui,|UNK|UNK|UNK c'est|UNK|UNK|UNK nes|UNK|UNK|UNK not moi.|UNK|UNK|UNK [11111]  [total=-405.275] core=(-400.000,-5.000,5.000,-0.621,-0.547,-0.460,-0.801,-0.207,0.000,0.000,-0.207,0.000,0.000,0.000,-21.331)  
+Line 0: Translation took 0.000 seconds total
+Name:moses	VmPeak:220788 kB	VmRSS:47468 kB	RSSMax:47880 kB	user:0.786	sys:0.029	CPU:0.815	real:0.750
