@@ -1,0 +1,33 @@
+export Moses="/usr/local/mosesdecoder"
+export IRSTLM="/usr/local/irstlm"
+export Me="/users/case4/smitha47/SMT-Project"
+export Corpus="/users/case4/smitha47/SMT-Project/corpus"
+
+cd $Me
+
+mkdir corpus
+cd corpus
+
+$Moses/scripts/tokenizer/tokenizer.perl ­l en <$Corpus/train-data.en > $Corpus/train-data-token.en
+$Moses/scripts/tokenizer/tokenizer.perl ­l fr <$Corpus/train-data.fr > $Corpus/train-data-token.fr
+
+Need to come back to above step when we have our tune and test datasets.
+
+$Moses/scripts/training/clean-corpus-n.perl $Corpus/train-data-token fr en $Corpus/train-data-clean 1 50
+
+
+mkdir lm
+cd lm
+
+$IRSTLM/bin/add-start-end.sh < $Corpus/train-data-token.en > ./lm-fr-en.sb.en
+
+
+$IRSTLM/bin/build-lm.sh -i ./lm-fr-en.sb.en -n 3 -t ./tmp -p -s improved-kneser-ney -o ./lm.en
+
+$IRSTLM/bin/compile-lm --text=yes lm.en.gz lm.arpa.en
+
+
+nohup nice $Moses/scripts/training/train-model.perl -root-dir train -corpus $Corpus/train-data-clean -f fr -e en -alignment grow-diag-final-and -reordering msd-bidirectional-fe -lm 0:3:$Me/lm/lm.arpa.en:8 -external-bin-dir $Moses/tools >&training.out &
+
+
+$Moses/bin/moses -f ./working/train/model/moses.ini
