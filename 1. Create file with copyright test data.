@@ -1,0 +1,8 @@
+1. Create file with copyright test data.
+2. Get a parallel corpus of copyright sentences. (From anywhere really)
+3. Find a way to properly evaluate bleu score with moses. (Moses for mear mortals)
+4. Get Bleu score for the currently trained moses system on the trained data from gothic french domain.
+5. """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" copyright domain.
+6. Retrain current moses system with copyright language.
+7. Evaluate with bleu score, and measure performance improvement.
+8. Presentation write-up.
